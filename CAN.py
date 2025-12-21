@@ -18,7 +18,6 @@ def getgrp(team):
     for i in Initial_standing:
         if team in i:
             return Initial_standing.index(i)+1
-    raise ValueError(f"Team not found in groups: {team}")
 def getcota(team):
             g = getgrp(team)-1
             return Cotas[g][Initial_standing[g].index(team)]
@@ -34,8 +33,8 @@ for i in range(6):
 
     standing = np.random.choice(
         options,
-        size=4,          # k éléments
-        replace=False,   # SANS remise
+        size=4,         
+        replace=False,   
         p=probas
     )
     final_standing.append(standing)
@@ -55,36 +54,14 @@ poids = th_cotas
 probas = np.array(poids) / sum(poids)
 best_thrds = list(np.random.choice(
     options,
-    size=4,          # k éléments
-    replace=False,   # SANS remise
+    size=4,          
+    replace=False,   
     p=probas
 ))
 
 
 print(f"Best thirds:\n{best_thrds[0]} - {best_thrds[1]} - {best_thrds[2]} - {best_thrds[3]}\n")    
 
-'''def comm(list1, list2):
-     cmn = []
-     for i in list1:
-          if i in list2:
-               cmn.append(i)
-     return cmn
-#eliminatories
-def thirds_list(a, b, c):
-     tli= []
-     grps_of_thirds = []
-     for i in best_thrds:
-          grps_of_thirds.append(getgrp(i))
-     list_choices = [[2,5,6], [1,3,4], [3,4,5], [1,2,6]]
-     commun = comm(list_choices[0],best_thrds)
-     if len(commun)==1 :
-          tli[0]=commun
-     elif len(commun)==2:
-          
-getthird = thirds_list() '''
-
-
-# groupes autorisés par position
 allowed_groups = {
     0: {2, 5, 6},
     1: {1, 3, 4},
@@ -93,12 +70,9 @@ allowed_groups = {
 }
 
 def assign_positions(teams):
-    """
-    teams : list of 4 distinct team names
-    return : list of 4 teams ordered according to constraints
-    """
 
-    for _ in range(1000):  # sécurité anti-boucle infinie
+
+    for _ in range(1000):  
         result = [None] * 4
         used = set()
 
@@ -109,7 +83,7 @@ def assign_positions(teams):
             ]
 
             if not candidates:
-                break  # échec → on recommence
+                break  
 
             chosen = random.choice(candidates)
             result[pos] = chosen
@@ -130,53 +104,6 @@ huits = [[final_standing[0][1], final_standing[2][1]],
         [final_standing[2][0], assign_positions(best_thrds)[3]]]      
 
 
-'''for i in best_thrds:
-    if getgrp(i) in [2, 6]:
-        if huits[1][1]==X:
-            huits[1][1]=i
-        else:
-            huits[7][1]=i
-    elif getgrp(i) in [3, 4]:
-        if huits[2][1]==X:
-            huits[2][1]=i
-        else:
-            huits[5][1]=i
-    elif getgrp(i)==5:
-        if huits[1][1]==X:
-            huits[1][1]=i
-        else:
-            huits[5][1]=i
-    else:
-        if huits[2][1]==X:
-            huits[2][1]=i
-        else:
-            huits[7][1]=i'''
-
-'''# mapping: group -> possible huits indices (priority order)
-group_map = {
-    2: (1, 7),
-    6: (1, 7),
-    3: (2, 5),
-    4: (2, 5),
-    5: (1, 5)
-}
-
-for i in best_thrds:
-    grp = getgrp(i)
-
-    # default case
-    if grp not in group_map:
-        targets = (2, 7)
-    else:
-        targets = group_map[grp]
-
-    # place team in first available slot
-    for idx in targets:
-        if huits[idx][1] == X:
-            huits[idx][1] = i
-            break'''
-
-        
 print("\n*** 1/8-finals ***:\n")
 for i in huits:
     print(i[0] + " Vs " + i[1] + " \n")
@@ -192,8 +119,8 @@ for i in huits:
     probas = np.array(poids) / sum(poids)
     vainc = np.random.choice(
         options,
-        size=1,          # k éléments
-        replace=False,   # SANS remise
+        size=1,         
+        replace=False,   
         p=probas
     )
     quarts.append(vainc[0])
@@ -211,8 +138,8 @@ for i in range (0, len(quarts), 2):
     probas = np.array(poids) / sum(poids)
     vainc = np.random.choice(
         options,
-        size=1,          # k éléments
-        replace=False,   # SANS remise
+        size=1,         
+        replace=False,   
         p=probas
     )
     semis.append(vainc[0])
@@ -230,8 +157,8 @@ for i in range (0, len(semis), 2):
     probas = np.array(poids) / sum(poids)
     vainc = np.random.choice(
         options,
-        size=1,          # k éléments
-        replace=False,   # SANS remise
+        size=1,         
+        replace=False,   
         p=probas
     )
     fin.append(vainc[0])
