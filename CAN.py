@@ -62,7 +62,7 @@ best_thrds = list(np.random.choice(
 
 print(f"Best thirds:\n{best_thrds[0]} - {best_thrds[1]} - {best_thrds[2]} - {best_thrds[3]}\n")    
 
-allowed_groups = {
+'''allowed_groups = {
     0: {2, 5, 6},
     1: {1, 3, 4},
     2: {3, 4, 5},
@@ -92,16 +92,27 @@ def assign_positions(teams):
         if None not in result:
             return result
 
-    raise ValueError("No valid assignment found")
+    raise ValueError("No valid assignment found")'''
+def vsThird(nGrp):
+     i=0
+     team=""
+     while i<len(best_thrds):
+          if(nGrp!=getgrp(best_thrds[i])):
+            team=best_thrds[i]
+            best_thrds.remove(team)
+            break
+          else:
+               i+=1
+     return team
 
 huits = [[final_standing[0][1], final_standing[2][1]],    
-      [final_standing[3][0], assign_positions(best_thrds)[0]],       
-      [final_standing[1][0], assign_positions(best_thrds)[1]],       
+      [final_standing[3][0], vsThird(4)],       
+      [final_standing[1][0], vsThird(2)],       
        [final_standing[5][0], final_standing[4][1]],
        [final_standing[1][1], final_standing[5][1]],
-       [final_standing[0][0], assign_positions(best_thrds)[2]],          
+       [final_standing[0][0], vsThird(1)],          
        [final_standing[4][0], final_standing[3][1]],
-        [final_standing[2][0], assign_positions(best_thrds)[3]]]      
+        [final_standing[2][0], vsThird(3)]   ]   
 
 
 print("\n*** 1/8-finals ***:\n")
@@ -166,7 +177,6 @@ for i in range (0, len(semis), 2):
 print(f"{fin[0]} Vs {fin[1]}\n")
 
 #Winner
-print("Winner\n")
 options = [fin[0], fin[1]]
 poids = [getcota(fin[0]), getcota(fin[1])]
 
