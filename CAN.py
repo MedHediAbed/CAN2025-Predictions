@@ -2,7 +2,7 @@
 import random
 import numpy as np
 
-print("*** Group stage*** : \n ")
+print("======================= 🔥🔥 Group stage 🔥🔥 ======================= \n ")
 
 Initial_standing = [["Morocco", "Comores", "Mali", "Zambia"], 
                     ["Angola", "Egypt", "South Africa", "Zimbabwe"],
@@ -41,7 +41,7 @@ for i in range(6):
     first = standing[0] 
     second = standing[1]
 
-    print(f"Group {i+1}: \nfirst: {first} \nsecond: {second }")
+    print(f"Group {i+1}: \nfirst: {first} \nsecond: {second } \n")
 thirds = []
 th_cotas = []
 for j in range (len(final_standing)):
@@ -60,39 +60,8 @@ best_thrds = list(np.random.choice(
 ))
 
 
-print(f"Best thirds:\n{best_thrds[0]} - {best_thrds[1]} - {best_thrds[2]} - {best_thrds[3]}\n")    
+print(f" 3️⃣ Best thirds 3️⃣ \n{best_thrds[0]} - {best_thrds[1]} - {best_thrds[2]} - {best_thrds[3]}\n")    
 
-'''allowed_groups = {
-    0: {2, 5, 6},
-    1: {1, 3, 4},
-    2: {3, 4, 5},
-    3: {1, 2, 6}
-}
-
-def assign_positions(teams):
-
-
-    for _ in range(1000):  
-        result = [None] * 4
-        used = set()
-
-        for pos in range(4):
-            candidates = [
-                t for t in teams
-                if t not in used and getgrp(t) in allowed_groups[pos]
-            ]
-
-            if not candidates:
-                break  
-
-            chosen = random.choice(candidates)
-            result[pos] = chosen
-            used.add(chosen)
-
-        if None not in result:
-            return result
-
-    raise ValueError("No valid assignment found")'''
 def vsThird(nGrp):
      i=0
      team=""
@@ -115,12 +84,12 @@ huits = [[final_standing[0][1], final_standing[2][1]],
         [final_standing[2][0], vsThird(3)]   ]   
 
 
-print("\n*** 1/8-finals ***:\n")
+print("\n======================= 🔥🔥 1/8-finals 🔥🔥 ======================= \n")
 for i in huits:
     print(i[0] + " Vs " + i[1] + " \n")
 
 #Quarter-finals
-print("*** Quarter-finals ***:\n")
+print("======================= 🔥🔥 Quarter-finals 🔥🔥 =======================\n")
 quarts = []
 for i in huits:
 
@@ -139,7 +108,7 @@ for i in huits:
 for i in range(0, len(quarts), 2):
     print(f"{quarts[i]} Vs {quarts[i+1]}\n")
 #Semi-finals
-print("*** Semi-finals ***:\n")
+print("======================= 🔥🔥🔥 Semi-finals 🔥🔥🔥 ======================= \n")
 semis=[]
 for i in range (0, len(quarts), 2):
 
@@ -158,7 +127,7 @@ for i in range (0, len(quarts), 2):
 print(f"{semis[0]} Vs {semis[1]}\n\n{semis[2]} Vs {semis[3]}\n")
 
 #Final:
-print("***Final*** 🔥:\n")
+print("======================= 🔥🔥🔥🔥 FINAL 🔥🔥🔥🔥 ======================= \n")
 fin=[]
 for i in range (0, len(semis), 2):
 
@@ -187,6 +156,6 @@ win = np.random.choice(
     replace=False,
     p=probas
 )
-print(f"🔥 Winner 🔥:{win[0]}")
+print(f" ==================== 🏆 WINNER 🏆 ===================== \n ======================= {win[0]} ====================   \n=================================================")
 
 
